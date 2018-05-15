@@ -1,9 +1,17 @@
-var sys = require("sys"),
-my_http = require("http");
-my_http.createServer(function(request,response){
-  sys.puts("I got kicked");
-  response.writeHeader(200, {"Content-Type": "text/plain"});
-  response.write("Hello World");
-  response.end();
-}).listen(8080);
-sys.puts("Server Running on 8080"); 
+var http = require('http'),
+    fs = require('fs');
+
+http.createServer(function(request, response) {
+}).listen(3000);
+
+
+fs.readFile("index.html", function (err, html) {
+    if (err) {
+        throw err; 
+    }       
+    http.createServer(function(request, response) {  
+        response.writeHeader(200, {"Content-Type": "text/html"});  
+        response.write(html);  
+        response.end();  
+    }).listen(8000);
+});
