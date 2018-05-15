@@ -11,3 +11,7 @@
 		"gulp-connect": "latest"
 	}
 }
+
+"scripts": {
+    "start": "node your-script.js"
+}
